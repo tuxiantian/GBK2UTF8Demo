@@ -8,21 +8,21 @@ import org.apache.commons.io.FileUtils;
 public class GBK2UTF8App {
 
 	/**
-	 * 将制定目录下的所有Java源文件的编码格式从GBK修改为UTF-8
+	 * 灏嗗埗瀹氱洰褰曚笅鐨勬墍鏈塉ava婧愭枃浠剁殑缂栫爜鏍煎紡浠嶨BK淇敼涓篣TF-8
 	 */
 	public static void main(String[] args) throws Exception {
-		//GBK编码格式源码路径
+		//GBK缂栫爜鏍煎紡婧愮爜璺緞
 		String srcDirPath = "E:\\eclipse\\mongodb\\src";
-		//转为UTF-8编码格式源码路径
+		//杞负UTF-8缂栫爜鏍煎紡婧愮爜璺緞
 		String utf8DirPath = srcDirPath;
 		
-		//获取所有java文件
+		//鑾峰彇鎵�鏈塲ava鏂囦欢
 		Collection<File> javaGbkFileCol =  FileUtils.listFiles(new File(srcDirPath),null, true);
 		
 		for (File javaGbkFile : javaGbkFileCol) {
-			//UTF8格式文件路径
+			//UTF8鏍煎紡鏂囦欢璺緞
 			String utf8FilePath = utf8DirPath+javaGbkFile.getAbsolutePath().substring(srcDirPath.length());
-			//使用GBK读取数据，然后用UTF-8写入数据
+			//浣跨敤GBK璇诲彇鏁版嵁锛岀劧鍚庣敤UTF-8鍐欏叆鏁版嵁
 			FileUtils.writeLines(new File(utf8FilePath), "UTF-8", FileUtils.readLines(javaGbkFile, "GBK"));		
 		}
 
